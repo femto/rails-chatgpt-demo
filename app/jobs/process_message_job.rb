@@ -10,7 +10,7 @@ class ProcessMessageJob < ApplicationJob
       parameters: {
           model: "gpt-3.5-turbo", # Required.
           messages: message.conversation.messages.where("id <= ?", message.id).map { |message|
-            { role: message.role, content: message.content }
+            { role: message.role, content: message.content.to_s }
           }, # Required.
       }
     )

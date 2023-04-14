@@ -7,6 +7,9 @@
       New
     </button>
   <% end %>
+  <button class="btn btn-primary ms-3" data-bs-toggle="modal" data-bs-target="#openai-key-modal">
+    Configure OpenAI Key
+  </button>
 </div>
 
 <div class="list-group">
@@ -15,4 +18,26 @@
       #<%= conversation.id %>
     </a>
   <% end %>
+</div>
+
+<!-- OpenAI Key Modal -->
+<div class="modal fade" id="openai-key-modal" tabindex="-1" aria-labelledby="openai-key-modal-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="openai-key-modal-label">Configure OpenAI Key</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- OpenAI Key Configuration Form -->
+        <%= form_with url: configure_openai_key_path do |form| %>
+          <div class="mb-3">
+            <%= form.label :api_key, class: "form-label" %>
+            <%= form.text_field :api_key, class: "form-control",value: OpenAI.configuration.access_token %>
+          </div>
+          <button type="submit" class="btn btn-primary">Save</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

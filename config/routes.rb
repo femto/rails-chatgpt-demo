@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages, only: [:create]
   end
+  post '/configure_openai_key', to: 'application#configure_openai_key'
 end
